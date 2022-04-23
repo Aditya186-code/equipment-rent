@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import React from 'react'
 import Khalti from '../../components/Payment/Khalti/Khalti'
+import Esewa from "../../components/Payment/Esewa/Esewa";
 
 const style = {
   position: 'absolute',
@@ -19,8 +20,10 @@ const style = {
 
 const DesignService = () => {
     const [open, setOpen] = React.useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
     console.log(DesignServiceData);
     const listItems = DesignServiceData.map((item) =>
         <div className="card" key={item.id}>
@@ -42,7 +45,8 @@ const DesignService = () => {
                     <h3 style = {{textAlign : "center", marginBottom : "15px" }}>Select Payment Method</h3>
                     <div style = {{display : "flex", alignItems : "center", justifyContent : "space-between"}}>
                     <Khalti />
-                    <p>Pay with Esewa</p>
+                    <Esewa />
+                    
                     </div>
                 </Box>
                 </Modal>

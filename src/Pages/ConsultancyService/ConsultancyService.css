@@ -161,6 +161,8 @@ background-color: #272b34;
     -webkit-transition: background-color .3s ease;
     transition: background-color .3s ease;
     overflow: hidden;
+    outline: none;
+    border: none;
   }
 
   .main_content .card:hover .bttn {

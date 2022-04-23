@@ -10,6 +10,7 @@ import Technician from './Pages/Technician/Technician'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login';
 
+
 function App() {
   return (
     <>
@@ -17,12 +18,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' exact element={<Home />}/>
-        <Route path='/design-services' element={<DesignService />}/>
+        <Route path='/design-services' exact element={<DesignService />}/>
         <Route path='/consultancy-service' exact element={<ConsultancyService />}/>
         <Route path='/equipment-rental' exact element={<EquipmentRental />}/>
         <Route path='/technicians' exact element={<Technician />}/>
-        <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/sign-up' exact element={<SignUp />} />
+        <Route path='/login' exact element={<Login />} />
+        
       </Routes>
     </Router>
 
