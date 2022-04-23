@@ -1,0 +1,31 @@
+.technicianContainer{
+    padding : 20px;
+}
+   
+.technicianWrapper{
+    display : flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+
+}
+.individual {
+   width: 350px;
+   height: 380px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;;
+    padding : 10px;
+    margin : 10px;
+    cursor : pointer;
+    transition: all 0.5s ease-in-out;;
+
+}
+.individual:hover{
+    transform: scale(1.06);
+}
+.individualImage{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+
+}
