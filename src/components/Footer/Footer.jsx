@@ -20,21 +20,21 @@ function Footer() {
               type='email'
               placeholder='Your Email'
             />
-            <button className ='btnSection btnFooter'>Join</button>
+            <Link to = '/membership'><button className ='btnSection btnFooter'>Join</button></Link>
           </form>
         </div>
       </section>
       <div class='footer-links'>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
-            <h2>About Us</h2>
-            <Link to='/sign-up'>How it works</Link>
+            <Link to = '/aboutUs' style = {{fontSize : "25px", fontWeight : "bold", marginBottom : "10px"}}>About Us</Link>
+            <Link to='/'>How it works</Link>
             <Link to='/'>Testimonials</Link>
             <Link to='/'>Careers</Link>
             <Link to='/'>Investors</Link>
           </div>
           <div class='footer-link-items'>
-            <h2>Contact Us</h2>
+          <Link to = '/contactUs' style = {{fontSize : "25px", fontWeight : "bold", marginBottom : "10px"}}>Contact Us</Link>
             <Link to='/'>Contact</Link>
             <Link to='/'>Support</Link>
             <Link to='/'>Destinations</Link>

@@ -9,6 +9,10 @@ import EquipmentRental from './Pages/EquipmentRental/EquipmentRental'
 import Technician from './Pages/Technician/Technician'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login';
+import PostServices from './Pages/PostServices/PostServices';
+import AboutUs from './Pages/AboutUs/AboutUs';
+import ContactUs from './Pages/ContactUs/ContactUs';
+import MemberShip from './Pages/MemberShip/MemberShip';
 
 
 function App() {
@@ -24,7 +28,10 @@ function App() {
         <Route path='/technicians' exact element={<Technician />}/>
         <Route path='/sign-up' exact element={<SignUp />} />
         <Route path='/login' exact element={<Login />} />
-        
+        <Route path='/postServices' exact element = {<PostServices />} />
+        <Route path = '/contactUs' exact element = {<ContactUs/>} />
+        <Route path = '/aboutUs' exact element = {<AboutUs />} />
+        <Route path = '/membership' exact element = {<MemberShip />} />
       </Routes>
     </Router>
 
@@ -33,4 +40,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

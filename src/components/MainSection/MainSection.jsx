@@ -9,11 +9,13 @@ function MainSection() {
         <h1>Build Nepal</h1>
         <p>Change starts with you</p>
         <div className='main-btns'>
+            <Link to ='/postServices'>
             <button className='btnSection btn-post'>
-             
+                
                 Post your Services
                 
             </button>
+            </Link>
             <button className='btnSection btn-rent'>
             <Link to = '/equipment-rental' style = {{textDecoration : "none"}}>
                 Rent Equipments

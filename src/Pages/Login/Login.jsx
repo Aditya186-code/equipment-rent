@@ -8,8 +8,8 @@ const SignUp = () => {
         <form className="loginForm">
         
           <input  className = "formInput" placeholder="Username" />
-          <input  className = "formInput" placeholder="Email" />
-          <input  className = "formInput" placeholder="Password" />
+          <input type = "email" className = "formInput" placeholder="Email" />
+          <input type = "password"  className = "formInput" placeholder="Password" />
           
          
           <button className = "loginAccount">Login</button>

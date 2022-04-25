@@ -75,8 +75,9 @@ function Navbar() {
                 Technicians
               </Link>
             </li>
+            
 
-            <li>
+            {/* <li>
               <Link
                 to='/sign-up'
                 className='nav-links-mobile'
@@ -84,11 +85,18 @@ function Navbar() {
               >
                 Sign Up
               </Link>
-            </li>
+            </li> */}
           </ul>
-          {button && <Link to = '/sign-up'>
+          {/* {button && <Link to = '/sign-up'>
             <button className = "navbarButton">SIGN UP</button>
+          </Link>} */}
+          {button && <Link  className='nav-links' to = '/sign-up'>
+            Sign Up
           </Link>}
+
+          {/* <Link  className='nav-links' to = '/sign-up' style = {{marginRight : "10px"}}>
+            About
+          </Link> */}
          
         </div>
 

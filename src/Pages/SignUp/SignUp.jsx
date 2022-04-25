@@ -8,9 +8,9 @@ const SignUp = () => {
         <form className="signUpForm">
         <input className = "formInput" placeholder="Name" />
           <input  className = "formInput" placeholder="Username" />
-          <input  className = "formInput" placeholder="Email" />
-          <input  className = "formInput" placeholder="Password" />
-          <input  className = "formInput" placeholder="Confirm Password" />
+          <input  type = "email" className = "formInput" placeholder="Email" />
+          <input type = 'password'  className = "formInput" placeholder="Password" />
+          <input type = 'password' className = "formInput" placeholder="Confirm Password" />
           <span className = "agreement">
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>

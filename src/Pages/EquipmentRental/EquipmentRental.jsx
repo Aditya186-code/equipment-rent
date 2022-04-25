@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import React from 'react'
 import Khalti from '../../components/Payment/Khalti/Khalti'
-
+import Esewa from "../../components/Payment/Esewa/Esewa";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -43,7 +43,7 @@ const EquipmentRental = () => {
                     <h3 style = {{textAlign : "center", marginBottom : "15px" }}>Select Payment Method</h3>
                     <div style = {{display : "flex", alignItems : "center", justifyContent : "space-between"}}>
                     <Khalti />
-                    <p>Pay with Esewa</p>
+                    <Esewa />
                     </div>
                 </Box>
                 </Modal>

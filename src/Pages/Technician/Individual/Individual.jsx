@@ -1,11 +1,11 @@
 import React from 'react'
 import './Individual.css'
 
-const Individual = ({img1Src, img2Src, name1, name2, name3, name4}) => {
+const Individual = ({occupation,img1Src, img2Src, name1, name2, name3, name4}) => {
   return (
         <div className="individual">
             <img className = "individualImage" src={img1Src} alt="" />
-
+            <p style = {{fontWeight : "bold",textAlign : "center"}}>{occupation}</p>
             <div className = "individualPersonContainer">
             <div className = "individualProfession">
               <p className = "individualName" >{name1}</p>
