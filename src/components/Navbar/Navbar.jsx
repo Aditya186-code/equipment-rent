@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import Logo from './logo.png'
+import { Menu } from '@mui/material';
 
 
 function Navbar() {
@@ -29,12 +31,10 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            Build Nepal
+            <img style  = {{width : "200px", height : "70px", objectFit : "cover"}}src={Logo} alt="" />
             <i class="fa fa-industry" />
           </Link>
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
+          
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
             <li className='nav-item'>
@@ -85,11 +85,20 @@ function Navbar() {
               >
                 Sign Up
               </Link>
+            
             </li> */}
+
+          
+
+             <div className='menu-icon' onClick={handleClick}>
+                <Menu />
+                <i className={click ? 'fas fa-times' : 'fa-solid fa-bars'} />
+              </div>
           </ul>
           {/* {button && <Link to = '/sign-up'>
             <button className = "navbarButton">SIGN UP</button>
           </Link>} */}
+          
           {button && <Link  className='nav-links' to = '/sign-up'>
             Sign Up
           </Link>}

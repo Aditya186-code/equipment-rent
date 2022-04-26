@@ -50,7 +50,7 @@ function Footer() {
             <Link to='/'>Twitter</Link>
           </div>
           <div class='footer-link-items'>
-            <h2>Legal</h2>
+          <Link to = '/legalTerms' style = {{fontSize : "25px", fontWeight : "bold", marginBottom : "10px"}}>Legal</Link>
             <Link to='/'>Terms of Service</Link>
             <Link to='/'>Privacy</Link>
           </div>

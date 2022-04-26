@@ -11,11 +11,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: whitesmoke;
 }
 
 .signUpWrapper{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 30%;
+    width: 400px;
   padding: 20px;
   background-color: white;
   border-radius: 5px;
@@ -49,6 +50,11 @@
   .createAccount{
     padding: 10px;
     margin-bottom: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: black;
+    color : white;
+    font-size: 18px;
   }
   .alreadyAccount{
    text-align: center;

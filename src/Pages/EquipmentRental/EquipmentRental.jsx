@@ -1,61 +1,93 @@
-import EquipmentRentalData from "../../data/EquipmentRentalData";
-import './EquipmentRental.css'
+// import DesignServiceData from "../../data/DesignServiceData";
+import '../DesignService/DesignService.css'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import React from 'react'
 import Khalti from '../../components/Payment/Khalti/Khalti'
 import Esewa from "../../components/Payment/Esewa/Esewa";
+import { addProduct } from "../../redux/cartRedux";
+import { useState, useEffect } from "react";
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 3,
-  };
-  
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 3,
+};
 
-const EquipmentRental = () => {
+const EquipmentRental = ({signedIn}) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+      if(!signedIn){
+        navigate('/login')
+      }
+    },[signedIn])
+
+    const [designData, setDesignData] = useState({});
+    useEffect(() => {
+        const getPosts = async () => {
+          const response = await axios.get('http://127.0.0.1:8000/services/services-by-category/Equipment Rental')
+          setDesignData(response.data)
+        }
+        getPosts()
+        
+      }, [])
+
+
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-  console.log(EquipmentRentalData);
-  const listItems = EquipmentRentalData.map((item) =>
-      <div className="card" key={item.id}>
-          <div className="card_img">
-              <img src={item.thumb} alt = "" />
-          </div>
-          <div className="card_header">
-              <h2>{item.product_name}</h2>
-              <p>{item.description}</p>
-              <p className="price">${item.price}<span>{item.currency}</span></p>
-              <button className="bttn" onClick = {handleOpen}>Add To Cart</button>
-                <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                >
-                <Box sx={style}>
-                    <h3 style = {{textAlign : "center", marginBottom : "15px" }}>Select Payment Method</h3>
-                    <div style = {{display : "flex", alignItems : "center", justifyContent : "space-between"}}>
-                    <Khalti />
-                    <Esewa />
-                    </div>
-                </Box>
-                </Modal>
-          </div>
-      </div>
+    console.log(designData)
+    console.log(designData?.services)
+    // console.log(designData[services])
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-    );  
+  const handleClick = () => {
+      addProduct()
+  }
+    
     return (
-      <div className="equipmentRentalContainer">
+      <div className="designContainer">
          <h3>Equipment Rental</h3>
         <div className="main_content">
-            {listItems}
+           
+           {
+               designData?.services?.map(item => {
+                   return  <div className="card" key={item.id}>
+                   <div className="card_img">
+                   <img src={item.smart_image} alt = {item.main_image_alt_text} />
+                   </div>
+                   <div className="card_header">
+                   <h2 style = {{fontSize : "25px"}}>{item.name}</h2>
+                       <p style = {{fontSize : "18px"}}>{item.description}</p>
+                       <p className="price">${item.price}</p>
+                       <button className="bttn" onClick = {handleOpen}>Add To Cart</button>
+                       {/* <button className="bttn" onClick = {handleOpen}>Add To Cart</button> */}
+                       <Modal
+                       open={open}
+                       onClose={handleClose}
+                       aria-labelledby="modal-modal-title"
+                       aria-describedby="modal-modal-description"
+                       >
+                       <Box sx={style}>
+                           <h3 style = {{textAlign : "center", marginBottom : "15px" }}>Select Payment Method</h3>
+                           <div style = {{display : "flex", alignItems : "center", justifyContent : "space-between"}}>
+                           <Khalti />
+                           <Esewa />
+                           
+                           </div>
+                       </Box>
+                       </Modal>
+                   </div>
+               </div>
+       
+               })
+           }
             
         </div>
         </div>
