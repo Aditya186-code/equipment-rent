@@ -80,8 +80,8 @@ const DesignService = ({signedIn}) => {
                        <Box sx={style}>
                            <h3 style = {{textAlign : "center", marginBottom : "15px" }}>Select Payment Method</h3>
                            <div style = {{display : "flex", alignItems : "center", justifyContent : "space-between"}}>
-                           <Khalti />
-                           <Esewa />
+                           <Khalti price = {parseInt(item.price)}/>
+                           <Esewa price = {parseInt(item.price)}/>
                            
                            </div>
                        </Box>

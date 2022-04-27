@@ -7,6 +7,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom'
 
 const Navbar2 = ({signedIn, setSignedIn}) => {
+
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
   const navigate = useNavigate();
     const [click, setClick] = useState(false);
 
@@ -83,7 +87,7 @@ const Navbar2 = ({signedIn, setSignedIn}) => {
 
             <li className='nav-item menu-icon-container'>
                 
-            <MenuIcon className = "navbar-menu-icon" />    
+            <MenuIcon className = "navbar-menu-icon" onClick = {showSidebar} />    
             </li>
            
             

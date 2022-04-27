@@ -1,6 +1,39 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './ContactUs.css'
+import axios from 'axios'
 const ContactUs = () => {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [description, setDescription] = useState("")
+  const [address, setAddress] = useState("")
+  const [subject, setSubject] = useState("")
+  const [showMessage, setShowMessage] = useState("")
+
+  const handleSend = async(e) => {
+    e.preventDefault();
+
+    const response = await axios.post('http://127.0.0.1:8000/contact/submit-contact-form/',{
+      email : email,
+      description : description,
+      subject : subject,
+      address : address
+
+
+    })
+    console.log(response.data)
+    if(response.status === 200){
+
+      setShowMessage("Your query has been send to the admin! You will be informed soon")
+
+      setEmail("")
+      setName("")
+      setSubject("")
+      setDescription("")
+      setAddress("")
+
+    }
+    
+  }
   return (
       <div className="contactWrapper">
     <div class="container">
@@ -24,23 +57,27 @@ const ContactUs = () => {
         
       <form action="#">
         <div class="input-box">
-          <input type="text" placeholder="Enter your name" />
+          <input value = {name} onChange = {(e) => setName(e.target.value)} type="text" placeholder="Enter your name" />
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Enter your email" />
+          <input value = {email} onChange = {(e) => setEmail(e.target.value)} type="text" placeholder="Enter your email" />
+        </div>
+        <div class="input-box">
+          <input value = {subject} onChange= {(e) => setSubject(e.target.value)} type="text" placeholder="Enter Subject" />
         </div>
         <div class="input-box message-box">
-          <textarea name="" id="" cols="30" rows="10" placeholder = "Write message..." />
-        </div>
+          <textarea value = {description}  onChange = {(e) => setDescription(e.target.value)} name="" id="" cols="30" rows="10" placeholder = "Write message..." />
+       </div>
+        
         <div class="input-box">
-          <input type="text" placeholder="Enter your phone Number" />
-        </div>
-        <div class="input-box">
-          <input type="text" placeholder="Enter your address" />
+          <input value = {address} onChange = {(e) => setAddress(e.target.value)} type="text" placeholder="Enter your address" />
         </div>
         <div class="button">
-          <input type="button" value="Send Now" />
+          <input onClick = {handleSend} type="button" value="Send Now" />
         </div>
+        {
+          showMessage && <p style = {{marginTop : "10px"}}>{showMessage}</p>
+        }
       </form>
     </div>
     </div>

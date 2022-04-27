@@ -22,12 +22,12 @@ import { useSelector } from 'react-redux';
 import {useState} from 'react'
 import Navbar2 from './components/Navbar/Navbar2';
 import axios from 'axios'
-
-
+import Success from './Pages/Success/Success';
+import Failure from './Pages/Failure/Failure';
 
 
 function App() {
-  const quantity = useSelector(state => state.cart.quantity)
+  // const quantity = useSelector(state => state.cart.quantity)
   const [signedIn, setSignedIn] = useState(false);
   const localAccessToken =  localStorage.getItem('access')
   const localRefreshToken =  localStorage.getItem('refresh')
@@ -87,9 +87,11 @@ function App() {
         <Route path='/postServices'  exact element = {<PostServices signedIn = {signedIn}/>} />
         <Route path = '/contactUs' exact element = {<ContactUs/>} />
         <Route path = '/aboutUs' exact element = {<AboutUs />} />
-        <Route path = '/membership' exact element = {<MemberShip />} />
+        <Route path = '/membership' exact element = {<MemberShip signedIn = {signedIn}/>} />
         <Route path = '/legalTerms' exact element = {<LegalTerms />} />
         {/* <Route path = '/cart' exact element = {<Cart />} /> */}
+        <Route path = '/success'  element = {<Success />} />
+        <Route path = '/failure' element = {<Failure />} />
       </Routes>
     </Router>
 
