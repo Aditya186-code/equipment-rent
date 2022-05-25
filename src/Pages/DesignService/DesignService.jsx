@@ -9,6 +9,7 @@ import { addProduct } from "../../redux/cartRedux";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -39,6 +40,7 @@ const DesignService = ({signedIn}) => {
           setDesignData(response.data)
         }
         getPosts()
+         console.log(designData)
         
       }, [])
 
@@ -49,9 +51,13 @@ const DesignService = ({signedIn}) => {
     // console.log(designData[services])
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const handleClick = () => {
-      addProduct()
+      const dispatch = useDispatch();
+  let quantity = 1;
+  const addToCart = (item) => {
+    console.log(item)
+    dispatch(
+      addProduct({ ...item, quantity})
+    );
   }
     
     return (
@@ -67,11 +73,11 @@ const DesignService = ({signedIn}) => {
                    </div>
                    <div className="card_header">
                        <h2 style = {{fontSize : "25px"}}>{item.name}</h2>
-                       <p style = {{fontSize : "18px"}}>{item.description}</p>
-                       <p className="price">${item.price}</p>
-                       <button className="bttn" onClick = {handleOpen}>Add To Cart</button>
-                       {/* <button className="bttn" onClick = {handleOpen}>Add To Cart</button> */}
-                       <Modal
+                       <p style = {{fontSize : "18px"}}>{item.description.length > 20 ? item.description.slice(0,80) + '...' : item.description }</p>
+                       <p className="price">Rs. {item.price}</p>
+                       <button className="bttn" onClick = {() =>addToCart(item)}>Add To Cart</button>
+
+                       {/* <Modal
                        open={open}
                        onClose={handleClose}
                        aria-labelledby="modal-modal-title"
@@ -85,7 +91,7 @@ const DesignService = ({signedIn}) => {
                            
                            </div>
                        </Box>
-                       </Modal>
+                       </Modal> */}
                    </div>
                </div>
        

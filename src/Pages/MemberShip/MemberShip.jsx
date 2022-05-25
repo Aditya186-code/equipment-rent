@@ -3,11 +3,9 @@ import './MemberShip.css'
 import checkCircle from './check-circle.svg'
 import xSquare from './x-square.svg'
 import { useState } from 'react'
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Khalti from '../../components/Payment/Khalti/Khalti'
-import Esewa from "../../components/Payment/Esewa/Esewa";
+
 import { useNavigate } from 'react-router-dom';
+import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios';
 const style = {
   position: 'absolute',
@@ -20,11 +18,11 @@ const style = {
   boxShadow: 24,
   p: 3,
 };
+const stripe_key = "pk_test_51KU68wLRge6iNIRmPd85Zoi2slvHCf1tyXo21D3lq9ndIDrMODXfnUeoZPB47nfa8y8LVdQXFBhW69XUrkUftByy00FH3tv7Cy"
 const MemberShip = ({signedIn}) => {
-    const [open1, setOpen1] = React.useState(false);
+  
   const [memberShip, setMemberShip] = useState(false);
-  const handleOpen1 = () => setOpen1(true);
-  const handleClose1 = () => setOpen1(false);
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const MemberShip = ({signedIn}) => {
       navigate('/login')
     }
   },[signedIn])
-
+  const [stripeToken, setStripeToken] = useState("")
   useEffect(() => {
     const getMemberShip = async() => {
       const response = await axios.get('http://127.0.0.1:8000/membership/get-membership-details')
@@ -41,6 +39,13 @@ const MemberShip = ({signedIn}) => {
     }
     getMemberShip()
   },[])
+
+  const onToken = (token) => {
+    setStripeToken(token);
+    navigate('/')
+    
+  };
+
 
   return (
       <div className="priceComparisionWrapper">
@@ -52,7 +57,7 @@ const MemberShip = ({signedIn}) => {
           
           <div class="price-header">
         <div class="price">
-          <div class="dollar-sign">Rs</div>
+          <div class="dollar-sign">$</div>
           {item.price}
           <div class="per-month">/{item.membership_validity_in_months} month</div>
         </div>
@@ -98,22 +103,18 @@ const MemberShip = ({signedIn}) => {
         Feature F
       </div> */}
       <h3 className = 'membershipH3'>Duration : {item.membership_validity_in_months} Months</h3>
-      <button class="cta" onClick = {handleOpen1}>Start Today</button>
-      <Modal
-            open={open1}
-            onClose={handleClose1}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+      <StripeCheckout
+              name="Build Nepal "
+              image="https://ml8mzf2qdhvl.i.optimole.com/QtrEnA8-7AY3OSJ1/w:474/h:355/q:mauto/rt:fill/g:sm/https://www.buildupnepal.com/wp-content/uploads/2020/06/cseb-machine.jpg"
+              billingAddress
+              shippingAddress
+              description={`Your total is $${item?.price}`}
+              amount={item?.price * 100}
+              stripeKey={stripe_key}
+              token = {onToken}
             >
-                <Box sx={style}>
-                    <h3 style = {{textAlign : "center", marginBottom : "15px" }}>Select Payment Method</h3>
-                    <div style = {{display : "flex", alignItems : "center", justifyContent : "space-between"}}>
-                    <Khalti />
-                    <Esewa />
-                    
-                    </div>
-                </Box>
-                </Modal>
+              <button className = "cartSummaryButton">START TODAY</button>
+            </StripeCheckout>
           </div>
         })
       }

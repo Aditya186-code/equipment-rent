@@ -10,7 +10,7 @@ const SignUp = ({signedIn, setSignedIn}) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("")
-
+  const [error, setError] = useState("")
   useEffect(() => {
     if(signedIn){
       navigate('/')
@@ -49,8 +49,8 @@ const SignUp = ({signedIn, setSignedIn}) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-
-    const response = await axios.post('http://127.0.0.1:8000/accounts/token/', {
+    try{
+      const response = await axios.post('http://127.0.0.1:8000/accounts/token/', {
       username : username,
       email : email,
       password : password
@@ -62,6 +62,13 @@ const SignUp = ({signedIn, setSignedIn}) => {
 
       await localStorage.setItem('access', response.data.access)
       await localStorage.setItem('refresh', response.data.refresh)
+    }
+   
+
+    }
+    catch(error){
+      setError("Login Failed")
+
     }
     
 
@@ -83,11 +90,12 @@ const SignUp = ({signedIn, setSignedIn}) => {
           <input value = {email} onChange = {(e) => setEmail(e.target.value)} type = "email" className = "formInput" placeholder="Email" />
           <input value = {password} onChange = {(e) => setPassword(e.target.value)}  type = "password"  className = "formInput" placeholder="Password" />
           
-         
+
           <button className = "loginAccount" onClick = {handleSubmit}>Login</button>
+          
           </form>
           <Link to = '/sign-up' className = "newAccount"><span>Don't have an account? Click To Register</span></Link> 
-
+          <div style = {{color : 'red', 'textAlign' : 'center', 'marginTop' : '10px'}}>{error}</div>
      </div>
    </div>
   )

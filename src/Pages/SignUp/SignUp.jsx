@@ -12,6 +12,7 @@ const SignUp = ({signedIn, setSignedIn}) => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [name, setName] = useState("")
   // const [token, setToken] = useState("")
+  const [error, setError] = useState("")
 
   useEffect(() => {
     if(signedIn){
@@ -22,8 +23,8 @@ const SignUp = ({signedIn, setSignedIn}) => {
   const handleClick = async(e) => {
     
     e.preventDefault();
-    // console.log(email, password, username, confirmPassword, name)
-   const response =  await axios.post('http://127.0.0.1:8000/accounts/signup/', {
+    try{
+      const response =  await axios.post('http://127.0.0.1:8000/accounts/signup/', {
       email : email,
       password : password,
       username : username,
@@ -36,7 +37,14 @@ const SignUp = ({signedIn, setSignedIn}) => {
     
     navigate('/login')
   }
+  catch(error){
+    setError("Register Failed")
+  }
 
+
+    }
+    // console.log(email, password, username, confirmPassword, name)
+   
 
   return (
    <div className="signUpContainer">
@@ -55,7 +63,7 @@ const SignUp = ({signedIn, setSignedIn}) => {
           <button onClick = {handleClick} className = "createAccount">Create account</button>
           </form>
           <Link to = '/login' className = "alreadyAccount"><span>Already have an account? Click To Login!</span></Link> 
-
+          <div style = {{color : 'red', 'textAlign' : 'center', 'marginTop' : '10px'}}>{error}</div>
      </div>
    </div>
   )

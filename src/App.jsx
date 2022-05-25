@@ -92,6 +92,7 @@ function App() {
         {/* <Route path = '/cart' exact element = {<Cart />} /> */}
         <Route path = '/success'  element = {<Success />} />
         <Route path = '/failure' element = {<Failure />} />
+        <Route path = '/cart' element = {<Cart />} />
       </Routes>
     </Router>
 

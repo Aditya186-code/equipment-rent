@@ -56,6 +56,10 @@
      display : none;
  }
 
+ /* .shoppingIcon{
+     color : white !important;
+ } */
+
   @media screen and (max-width : 900px) {
       /* .navbar{
           display : flex;

@@ -5,15 +5,17 @@ import { useState } from 'react'
 import {Link} from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Badge from '@mui/material/Badge';
 const Navbar2 = ({signedIn, setSignedIn}) => {
 
   const [sidebar, setSidebar] = useState(false);
-
+  const dispatch = useDispatch();
   const showSidebar = () => setSidebar(!sidebar);
   const navigate = useNavigate();
     const [click, setClick] = useState(false);
-
+    const quantity = useSelector(state => state.cart.quantity)
     const closeMobileMenu = () => setClick(false);
 
     const logOut = () => {
@@ -84,6 +86,12 @@ const Navbar2 = ({signedIn, setSignedIn}) => {
             </li>
            
             }
+             {
+                signedIn && <Link to = '/cart' className = "navLinks" style = {{marginRight : "20px"}}><Badge badgeContent={quantity}  color="secondary">
+                <ShoppingCartIcon className = "shoppingIcon" style = {{fill : "white"}}/>
+              </Badge>
+              </Link>
+              }
 
             <li className='nav-item menu-icon-container'>
                 

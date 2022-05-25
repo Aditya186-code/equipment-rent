@@ -36,7 +36,7 @@ const Khalti = ({price}) => {
     let checkout = new KhaltiCheckout(config);
   return (
     <div>
-        <button className = "khaltiButton" onClick = {() => checkout.show({amount: 35000 })}>Pay With Khalti</button>
+        <button className = "khaltiButton" onClick = {() => checkout.show({amount: price * 100 })}>Pay With Khalti</button>
     </div>
   )
 }
