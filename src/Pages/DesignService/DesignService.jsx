@@ -49,8 +49,6 @@ const DesignService = ({signedIn}) => {
     console.log(designData)
     console.log(designData?.services)
     // console.log(designData[services])
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
       const dispatch = useDispatch();
   let quantity = 1;
   const addToCart = (item) => {
@@ -59,7 +57,9 @@ const DesignService = ({signedIn}) => {
       addProduct({ ...item, quantity})
     );
   }
-    
+    const handleLink = (id) => {
+      navigate(`/product/${id}`)
+    }
     return (
       <div className="designContainer">
          <h3>Design Services</h3>
@@ -67,7 +67,7 @@ const DesignService = ({signedIn}) => {
            
            {
                designData?.services?.map(item => {
-                   return  <div className="card" key={item.id}>
+                   return  <div className="card" key={item.id} onClick = {() =>handleLink(item.id)}>
                    <div className="card_img">
                        <img style = {{width : "300px", height : "200px"}} src={item.smart_image} alt = {item.main_image_alt_text} />
                    </div>

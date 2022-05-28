@@ -24,6 +24,7 @@ import Navbar2 from './components/Navbar/Navbar2';
 import axios from 'axios'
 import Success from './Pages/Success/Success';
 import Failure from './Pages/Failure/Failure';
+import Product from './Pages/Product/Product';
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
         <Route path = '/success'  element = {<Success />} />
         <Route path = '/failure' element = {<Failure />} />
         <Route path = '/cart' element = {<Cart />} />
+        <Route path = '/product/:id' element = {<Product />} />
       </Routes>
     </Router>
 

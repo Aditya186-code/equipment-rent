@@ -54,6 +54,10 @@ const EquipmentRental = ({signedIn}) => {
       addProduct({ ...item, quantity})
     );
   }
+
+  const handleLink = (id) => {
+    navigate(`/product/${id}`)
+  }
     return (
       <div className="designContainer">
          <h3>Equipment Rental</h3>
@@ -61,7 +65,7 @@ const EquipmentRental = ({signedIn}) => {
            
            {
                designData?.services?.map(item => {
-                   return  <div className="card" key={item.id}>
+                   return  <div className="card" key={item.id} onClick = {() => handleLink(item.id)}>
                    <div className="card_img">
                    <img src={item.smart_image} alt = {item.main_image_alt_text} />
                    </div>

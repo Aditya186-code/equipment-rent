@@ -67,7 +67,7 @@ const SignUp = ({signedIn, setSignedIn}) => {
 
     }
     catch(error){
-      setError("Login Failed")
+      setError("Username or Password Incorrect")
 
     }
     
