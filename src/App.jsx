@@ -34,7 +34,7 @@ function App() {
   const localRefreshToken =  localStorage.getItem('refresh')
 
   
-  
+  const [member, setMember] = useState(false);
 
   useEffect(() => {
 
@@ -78,7 +78,7 @@ function App() {
           {/* <button className = "badgeContainer" onClick = {logOut}>Log Out</button> */}
       
       <Routes>
-        <Route path='/' exact element={<Home />}/>
+        <Route path='/' exact element={<Home member = {member} setMember = {setMember} />}/>
         <Route path='/design-services' exact element={<DesignService signedIn = {signedIn}/>}/>
         <Route path='/consultancy-service' exact element={<ConsultancyService signedIn = {signedIn}  />}/>
         <Route path='/equipment-rental' exact element={<EquipmentRental signedIn = {signedIn} />}/>
@@ -88,7 +88,7 @@ function App() {
         <Route path='/postServices'  exact element = {<PostServices signedIn = {signedIn}/>} />
         <Route path = '/contactUs' exact element = {<ContactUs/>} />
         <Route path = '/aboutUs' exact element = {<AboutUs />} />
-        <Route path = '/membership' exact element = {<MemberShip signedIn = {signedIn}/>} />
+        <Route path = '/membership' exact element = {<MemberShip signedIn = {signedIn} member = {member} setMember = {setMember}/>} />
         <Route path = '/legalTerms' exact element = {<LegalTerms />} />
         {/* <Route path = '/cart' exact element = {<Cart />} /> */}
         <Route path = '/success'  element = {<Success />} />

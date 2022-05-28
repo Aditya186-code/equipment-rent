@@ -19,7 +19,7 @@ const style = {
   p: 3,
 };
 const stripe_key = "pk_test_51KU68wLRge6iNIRmPd85Zoi2slvHCf1tyXo21D3lq9ndIDrMODXfnUeoZPB47nfa8y8LVdQXFBhW69XUrkUftByy00FH3tv7Cy"
-const MemberShip = ({signedIn}) => {
+const MemberShip = ({signedIn, member, setMember}) => {
   
   const [memberShip, setMemberShip] = useState(false);
  
@@ -43,6 +43,7 @@ const MemberShip = ({signedIn}) => {
   const onToken = (token) => {
     setStripeToken(token);
     navigate('/')
+    setMember(true)
     
   };
 

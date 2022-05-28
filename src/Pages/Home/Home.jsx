@@ -4,10 +4,10 @@ import MainSection from '../../components/MainSection/MainSection'
 import Menu from '../../components/Menu/Menu'
 import Footer from '../../components/Footer/Footer'
 
-function Home () {
+function Home ({member, setMember}) {
     return (
         <div className="home">
-            <MainSection />
+            <MainSection member = {member} setMember = {setMember} />
             <Menu />
             <Footer />
 

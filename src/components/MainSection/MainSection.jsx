@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import './MainSection.css'
 
-function MainSection() {
+function MainSection({member, setMember}) {
   return (
     <div className='main-container'>
         <video src='videos/video-1.mp4' autoPlay loop muted />
@@ -10,7 +10,7 @@ function MainSection() {
         <p>Change starts with you</p>
         <div className='main-btns'>
             <Link to ='/postServices'>
-            <button className='btnSection btn-post'>
+            <button className='btnSection btn-post' disabled = {!member}>
                 
                 Post your Services
                 
