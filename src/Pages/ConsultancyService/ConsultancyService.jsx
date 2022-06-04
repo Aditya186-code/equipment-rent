@@ -45,14 +45,7 @@ const ConsultancyService = ({signedIn}) => {
     const [open, setOpen] = React.useState(false);
     console.log(designData)
     console.log(designData?.services)
-    const dispatch = useDispatch();
-    let quantity = 1;
-    const addToCart = (item) => {
-      console.log(item)
-      dispatch(
-        addProduct({ ...item, quantity})
-      );
-    }
+   
 
     const handleLink = (id) => {
       navigate(`/product/${id}`)
@@ -72,7 +65,7 @@ const ConsultancyService = ({signedIn}) => {
                    <h2 style = {{fontSize : "25px"}}>{item.name}</h2>
                        <p style = {{fontSize : "18px"}}>{item.description.length > 20 ? item.description.slice(0,80) + '...' : item.description }</p>
                        <p className="price">Rs. {item.price}</p>
-                       <button className="bttn" onClick = {() =>addToCart(item)}>Add To Cart</button>
+                       
                        
                    </div>
                </div>

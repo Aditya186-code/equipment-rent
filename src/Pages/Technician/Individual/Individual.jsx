@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Individual.css'
 
-const Individual = ({occupation,img1Src, img2Src, name1, name2, name3, name4}) => {
+const Individual = ({occupation,img1Src, img2Src, name1, name2, name3, name4,url}) => {
   return (
+    <Link to = {`/technicians/${url}`} style = {{textDecoration : 'none'}}>
         <div className="individual">
             <img className = "individualImage" src={img1Src} alt="" />
             <p style = {{fontWeight : "bold",textAlign : "center"}}>{occupation}</p>
@@ -25,7 +27,10 @@ const Individual = ({occupation,img1Src, img2Src, name1, name2, name3, name4}) =
             </div>
             </div>
             
-        </div>  )
+            
+        </div> 
+        </Link>
+         )
 }
 
 export default Individual

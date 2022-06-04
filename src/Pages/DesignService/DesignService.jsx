@@ -32,6 +32,7 @@ const DesignService = ({signedIn}) => {
       }
     },[signedIn])
 
+  
     const [designData, setDesignData] = useState({});
     useEffect(() => {
         const getPosts = async () => {
@@ -49,14 +50,7 @@ const DesignService = ({signedIn}) => {
     console.log(designData)
     console.log(designData?.services)
     // console.log(designData[services])
-      const dispatch = useDispatch();
-  let quantity = 1;
-  const addToCart = (item) => {
-    console.log(item)
-    dispatch(
-      addProduct({ ...item, quantity})
-    );
-  }
+ 
     const handleLink = (id) => {
       navigate(`/product/${id}`)
     }
@@ -75,7 +69,7 @@ const DesignService = ({signedIn}) => {
                        <h2 style = {{fontSize : "25px"}}>{item.name}</h2>
                        <p style = {{fontSize : "18px"}}>{item.description.length > 20 ? item.description.slice(0,80) + '...' : item.description }</p>
                        <p className="price">Rs. {item.price}</p>
-                       <button className="bttn" onClick = {() =>addToCart(item)}>Add To Cart</button>
+                       
 
                        {/* <Modal
                        open={open}

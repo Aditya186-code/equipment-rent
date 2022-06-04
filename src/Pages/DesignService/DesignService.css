@@ -160,23 +160,8 @@ background-color: #272b34;
   
   
 
-  .bttn {
-    width: 130px;
-    height: 35px;
-    font-size: 14px;
-    border-radius: 35px;
-    background-color: #2d343e;
-    color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    position: relative;
-    -webkit-transition: background-color .3s ease;
-    transition: background-color .3s ease;
-    overflow: hidden;
-    outline: none;
-    border: none;
-  }
-
-  .main_content .card:hover .bttn {
+  
+  /* .main_content .card:hover  {
     background-color: #fe8033;
     color: #fff;
-  }
+  } */

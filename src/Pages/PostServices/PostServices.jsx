@@ -11,7 +11,7 @@ const PostServices = ({signedIn}) => {
   const [image, setImage] = useState("")
   const [type, setType] = useState("Design Services")
   const navigate = useNavigate();
-  let category;
+  let category = [];
   useEffect(() => {
     if(!signedIn){
         navigate('/login')
@@ -19,9 +19,11 @@ const PostServices = ({signedIn}) => {
   }, [signedIn])
 
   const submit = async() => {
+  
+
     const response1 = await axios.get('http://127.0.0.1:8000/services/get-all-categories')
 
-    console.log(response1.data)
+    // console.log(response1.data)
 
     if(type === 'Design Services'){
         category = 1
@@ -32,17 +34,29 @@ const PostServices = ({signedIn}) => {
     else {
       category = 2
     }
-    const response = await axios.post('http://127.0.0.1:8000/services/create-new-service/',{
+    console.log("category is" + category)
+    console.log({name : name,
+      price : price,
+      main_image_link : image,
+      categories : [category],
+      description : description})
+    try{
+      
+      const response = await axios.post('http://127.0.0.1:8000/services/create-new-service/',{
       name : name,
       price : price,
       main_image_link : image,
       categories : [category],
       description : description
     })
-    console.log(response)
+    // console.log(response)
+    }
+    catch(error){
+      console.log(error)
+    }
+    
   }
 
-  console.log(type)
   return (
     // <div className ="postServicesContainer">
       

@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import axios from 'axios'
 import './Product.css'
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/cartRedux';
 import { useParams } from 'react-router-dom';
 const Product = () => {
     const param = useParams();
     console.log(param)
     const [data, setData] = useState({});
+
+
 
     useEffect(() => {
         const getProduct = async() => {
@@ -17,6 +21,15 @@ const Product = () => {
 
         getProduct()
     },[])
+
+    const dispatch = useDispatch();
+    let quantity = 1;
+    const addToCart = (item) => {
+      console.log(item)
+      dispatch(
+        addProduct({ ...item, quantity})
+      );
+    }
   return (
     <div className = "productWrapper">
         <div className="productImgContainer">
@@ -25,9 +38,9 @@ const Product = () => {
         <div className="infoContainer">
             <h1 className="productTitle">{data?.name}</h1>
             <p className="productDesc">{data?.description}</p>
-            <p className="productPrice">Price : ${data?.price}</p>
+            <p className="productPrice">Price : Rs.{data?.price}</p>
                 
-                <button className="productButton">Add To Cart</button>
+            <button className="bttn" onClick = {() =>addToCart(data)}>Add To Cart</button>
           
         </div>
 

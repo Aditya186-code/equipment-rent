@@ -25,6 +25,12 @@ import axios from 'axios'
 import Success from './Pages/Success/Success';
 import Failure from './Pages/Failure/Failure';
 import Product from './Pages/Product/Product';
+import Plumber from './Pages/Plumber/Plumber';
+import Surveyors from './Pages/Surveyors/Surveyors';
+import Electricians from './Pages/Electrician/Electrician';
+import Welders from './Pages/Welder/Welder';
+import Painters from './Pages/Painters/Painters';
+import CraneOperators from './Pages/CraneOperators/CraneOperators';
 
 
 function App() {
@@ -95,6 +101,12 @@ function App() {
         <Route path = '/failure' element = {<Failure />} />
         <Route path = '/cart' element = {<Cart />} />
         <Route path = '/product/:id' element = {<Product />} />
+        <Route path = '/technicians/plumbers' element = {<Plumber />} />
+        <Route path = '/technicians/surveyors' element = {<Surveyors />} />
+        <Route path = '/technicians/electricians' element = {<Electricians />} />
+        <Route path = '/technicians/welders' element = {<Welders />} />
+        <Route path = '/technicians/painters' element = {<Painters />} />
+        <Route path = '/technicians/craneoperators' element = {<CraneOperators />} />
       </Routes>
     </Router>
 
